@@ -11,10 +11,6 @@ function resolve(track) {
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),
-  // output: {
-  //   path: path.resolve(__dirname, '../public'),
-  //   filename: '[name].js'
-  // },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

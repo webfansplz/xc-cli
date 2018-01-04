@@ -8,6 +8,7 @@ module.exports = {
   },
   build: {
     publicPath: '/',
-    devtoolType: 'source-map'
+    devtoolType: 'source-map',
+    staticPath: 'static'
   }
 };
