@@ -10,9 +10,9 @@ const baseConf = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const notifier = require('node-notifier');
-
 const devConf = merge(baseConf, {
   output: {
+    filename: '[name].js',
     publicPath: devConfig.publicPath
   },
   devtool: devConfig.devtoolType,
@@ -41,6 +41,49 @@ const devConf = merge(baseConf, {
     },
     // 终端输出的只有初始启动信息。 webpack 的警告和错误是不输出到终端的
     quiet: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: devConfig.vueloaderConf
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     //开启HMR

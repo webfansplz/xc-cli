@@ -24,6 +24,29 @@ const prodConf = merge(baseConf, {
     chunkFilename: assetsPath('js/[name].[chunkhash].js')
   },
   devtool: prodConfig.devtoolType,
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: prodConfig.vueloaderConf
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'postcss-loader'],
+          fallback: 'vue-style-loader'
+        })
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'less-loader', 'postcss-loader'],
+          fallback: 'vue-style-loader'
+        })
+      }
+    ]
+  },
   plugins: [
     //每个chunk头部添加hey,xc-cli!
     new webpack.BannerPlugin('hey,xc-cli'),
