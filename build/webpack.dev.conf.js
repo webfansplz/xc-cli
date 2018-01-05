@@ -70,6 +70,12 @@ const devConf = merge(baseConf, {
         test: /\.less$/,
         use: [
           {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
             loader: 'less-loader',
             options: {
               sourceMap: true
