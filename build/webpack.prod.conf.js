@@ -59,7 +59,7 @@ const prodConf = merge(baseConf, {
       }
     }),
 
-    //分离引用的css
+    //分离入口引用的css,不内嵌到js bundle中!
 
     new ExtractTextPlugin({
       filename: assetsPath('css/[name].[contenthash].css'),

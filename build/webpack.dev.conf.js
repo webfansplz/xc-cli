@@ -52,6 +52,7 @@ const devConf = merge(baseConf, {
       {
         test: /\.css$/,
         use: [
+          'vue-style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -69,6 +70,7 @@ const devConf = merge(baseConf, {
       {
         test: /\.less$/,
         use: [
+          'vue-style-loader',
           {
             loader: 'css-loader',
             options: {

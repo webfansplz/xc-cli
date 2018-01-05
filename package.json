@@ -40,6 +40,8 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
