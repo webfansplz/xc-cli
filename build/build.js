@@ -1,22 +1,23 @@
-'use strict';
-//node loading
-const ora = require('ora');
+"use strict";
+//node for loading
+const ora = require("ora");
 // rm-rf for node
-const rm = require('rimraf');
+const rm = require("rimraf");
 //console for node
-const chalk = require('chalk');
-//
-const path = require('path');
-
-const webpack = require('webpack');
+const chalk = require("chalk");
+//path for node
+const path = require("path");
+//webpack
+const webpack = require("webpack");
 //webpack production setting
-const config = require('./webpack.prod.conf');
-
-const rmFile = path.resolve(__dirname, '../public/static');
-
-const spinner = ora('building for production...');
+const config = require("./webpack.prod.conf");
+//指定删除的文件
+const rmFile = path.resolve(__dirname, "../public/static");
+//build start loading
+const spinner = ora("building for production...");
 spinner.start();
 
+//构建全量压缩包！
 rm(rmFile, function(err) {
   if (err) throw err;
   webpack(config, function(err, stats) {
@@ -29,18 +30,18 @@ rm(rmFile, function(err) {
         children: false,
         chunks: false,
         chunkModules: false
-      }) + '\n\n'
+      }) + "\n\n"
     );
 
     if (stats.hasErrors()) {
-      console.log(chalk.red('  Build failed with errors.\n'));
+      console.log(chalk.red("  Build failed with errors.\n"));
       process.exit(1);
     }
 
-    console.log(chalk.cyan('  Build complete.\n'));
+    console.log(chalk.cyan("  Build complete.\n"));
     console.log(
       chalk.yellow(
-        '  Tip: built files are meant to be served over an HTTP server.\n' +
+        "  Tip: built files are meant to be served over an HTTP server.\n" +
           "  Opening index.html over file:// won't work.\n"
       )
     );
